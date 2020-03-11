@@ -17,40 +17,54 @@
 			<!-- Checkbox group (French, Bud Stage) -->
 			<fieldset>
 				<legend>Categories</legend>
-				<div class="french">
-					<input type="checkbox" id="french"/><span>French?</span>
+				<div class="label checkboxGrp">
+					<input type="checkbox" id="french"/><label>French?</label>
+					<span></span>
+					<code>If this is checked off, the French eBlast will be generated instead of English.</code>
 				</div>
-				<div class="bud">
-					<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
+				<div class="label">
+					<input type="checkbox" id="bud"/><label>Budweiser Stage?</label>
+					<span></span>
+					<code>If this is checked off, the Bud stage copy will be generated into the eBlast. This includes the small copy after pre-order snippet, and some copy in the Terms & Conditions.</code>
 				</div>
 			</fieldset>
 
-			<!-- Name -->
 			<fieldset>
 				<legend>Input</legend>
+	
+				<!-- Name -->
 				<div class="label name">
 					<span></span>
-					<code>This field here is the name of the artist, and it will be used to generate the name in the subject line, mailing ID, the location & venue, and the pre-sale blurb.</code>
+					<code>This field here is the name of the artist, and it will be used to generate the name in the subject line, mailing ID, the location & venue, and the pre-sale copy.</code>
 					<input type="text" id="name"/>
 				</div>
 
-				<!-- Image -->
+				<!-- Image name -->
 				<div class="label img_name">
 					<span></span>
-					<code>Input the image name here without the ext. It'll generate in at the end.</code>
-					<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
+					<code>Input the image name here, including the file ext (eg .jpg, .png). It'll generate in at the end.</code>
+					<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740.jpg"/>
 				</div>
 
-				<!-- Preorder snippet -->
+				<!-- Pre-order snippet -->
 				<div class="label preorder">
 					<span></span>
-					<code>This is the pre-sale snippet. If there is an artist name here that is the same in the name field, their name will be bolded in the HTML output.</code>
+					<code>This is the pre-sales snippet. If there is an artist name here that is the same in the name field, their name will be bolded in the HTML output.</code>
 					<textarea id="preorder"></textarea>
 				</div>
 
-				<!-- blurb -->
+				<!-- blurb (optional) -->
 				<div class="label blurb">
+					<input type="checkbox"><label>Enable?</label>
+					<span></span>
+					<code>Optional copy, it goes right below the pre-sales snippet. To enable, hit the checkbox; If the text is empty, it will not be added to the final output.</code>
 					<textarea id="blurb"></textarea>
+				</div>
+
+				<div class="label location">
+					<span></span>
+					<code>Location & venue copy goes here. First line will be capitalized (also bolded in the HTML version only)</code>
+					<textarea id="location"></textarea>
 				</div>
 			</fieldset>
 
@@ -61,6 +75,7 @@
 		<section id="output">
 			<fieldset>
 				<legend>Output</legend>
+				
 				<div class="output_info">
 					<h3 id="id"></h3>
 					<h4 id="subject"></h4>

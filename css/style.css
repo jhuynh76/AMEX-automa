@@ -21,6 +21,7 @@
 	--btn_color: #00a264;
 	--grey: #7d7a75;
 	--light_grey: #ded7c8;
+	--blue: #1c5c76;
 	--box_shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
@@ -63,7 +64,8 @@ fieldset{
 fieldset legend{color: var(--light_grey);}
 fieldset div:last-of-type{margin-bottom: 0}
 
-div, fieldset, #btnGenerate {margin-bottom: 15px;}
+div, fieldset, #btnGenerate {margin-bottom: 30px;}
+.checkboxGrp{margin-bottom: 15px;}
 
 .output_info{margin-bottom: 45px;}
 
@@ -77,26 +79,32 @@ div, fieldset, #btnGenerate {margin-bottom: 15px;}
 	content: '\f059';
 	font-size: 1em;
 	font-family: 'Font Awesome 5 Free';
-	font-weight: 900;
+	/*font-weight: 900;*/
 	margin-left: 5px;
 }
 
 .name:before{content: 'Name';}
 .img_name:before{content: 'Image Name';}
 .preorder:before{content: 'Pre-order';}
-.blurb:before{content: '*Blurb (Optional)';}
+.blurb:before{
+	content: '*Blurb (Optional)';
+	display: block;
+	margin-bottom: 15px;
+}
+.location:before{content: 'Location(s) & Venue(s)';}
 .legal:before{content: 'Legal';}
+
+#blurb{margin-top: 15px;}
 
 code{
 	display: none;
 	position: absolute;
 	max-width: 500px;
 	word-wrap: break-word;
-	background-color: #1c5c76;
+	background-color: var(--blue);
 	color: white;
 	border-radius: 5px;
 	padding: 10px;
-	margin-top: -10px;
 	z-index: 1;
 }
 
@@ -110,10 +118,17 @@ input[type="checkbox"]{
 
 input[type="text"], textarea{
 	width: -webkit-fill-available;
+	min-width: -webkit-fill-available;
 	padding: 10px; font-size: 1em;
 	border: none;
 	border-radius: 3px;
 	box-shadow: var(--box_shadow);
+}
+
+input[type="text"]:focus, textarea:focus{
+	outline-width: 2px;
+	outline-style: solid;
+	outline-color: var(--blue);
 }
 
 input::placeholder{
@@ -126,6 +141,13 @@ textarea{min-height: 200px;}
 /*--------------------------------------------------------------
 ## Buttons
 --------------------------------------------------------------*/
+.btn{
+	padding: 10px 30px;
+	font-size: 1em;
+	color: white;
+}
+.btn:active, .btn:focus{outline: none;}
+
 .btn-cta{
 	border: 1px solid #016c43;
 	border-radius: 5px;
@@ -134,17 +156,10 @@ textarea{min-height: 200px;}
 }
 .btn-cta:hover{background-color: #016c43;}
 
-.btn{
-	padding: 10px 30px;
-	font-size: 1em;
-	color: white;
-}
-.btn:active, .btn:focus{outline: none;}
-
+/*Cursor: Pointer*/
 input[type="checkbox"]:hover,
 .btn:hover,
-.label span
-{cursor: pointer;}
+.label span {cursor: pointer;}
 
 .btnTabs{
 	background-color: #999;
@@ -172,5 +187,9 @@ h3:before,h4:before{margin-right: 5px;}
 	min-height: 500px;
 	font-size: var(--placeholder_txt);
 }
+.output textarea:focus{
+	outline: none;
+}
 
+#blurb,
 #outputTxt{display: none;}

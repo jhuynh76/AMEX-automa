@@ -1,11 +1,53 @@
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Optional Toggle
+# Help Snippet
+# Tab Control
 # CTA function
   ## Replacement function
   ## Mailing ID
-# Tab Control
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Optional Toggle
+--------------------------------------------------------------*/
+$('.blurb input[type="checkbox"]').change(function(){
+    if ( $(this).prop('checked') ){
+      $('#blurb').fadeIn(300, function(){});      
+    }
+    else{
+      $('#blurb').fadeOut(300, function(){});
+    }
+});
+
+/*--------------------------------------------------------------
+# Help snippet
+--------------------------------------------------------------*/
+$('.label').each(function(){
+  $('span').mouseover(function(){
+    $(this).next('code').fadeIn(100, function(){});
+  });
+
+  $('span').mouseout(function(){
+    $(this).next('code').fadeOut(100, function(){});
+  });
+});
+
+/*--------------------------------------------------------------
+# Tab control
+--------------------------------------------------------------*/
+$('#btnHtml').click(function(){
+  $(this).addClass('active');
+  $('#btnTxt').removeClass('active');
+  $('#outputHtml').show();
+  $('#outputTxt').hide();
+});
+$('#btnTxt').click(function(){
+  $(this).addClass('active');
+  $('#btnHtml').removeClass('active');
+  $('#outputTxt').show();
+  $('#outputHtml').hide();
+});
 
 /*--------------------------------------------------------------
 # CTA function
@@ -13,8 +55,8 @@
 $('#btnGenerate').click(function(){
   var name = $('#name').val();
   var img_name = $('#img_name').val();
-  var preorder = $('#preorder').val();
   var blurb = $('#blurb').val();
+  var location = $('#location').val();
 
   var lang;
   var id;
@@ -51,9 +93,10 @@ $('#btnGenerate').click(function(){
   ## Replacement function
   --------------------------------------------------------------*/
   // finds name in preorder and bolds it, replaces ® to HTML code
+  var preorder = $('#preorder').val();
   var regx = new RegExp(name, 'g');
   var newPreorder = preorder
-    .replace(regx, '<b>' + name +'</b>')
+    // .replace(regx, '<b>' + name +'</b>')
     
     .replace(/[Á]/g, '&Aacute;')
     .replace(/[á]/g, '&aacute;')
@@ -99,6 +142,20 @@ $('#btnGenerate').click(function(){
 		.replace(/”/g, '&rdquo')
 		.replace(/\n/g, '<br>\r');
 
+
+  /*--------------------------------------------------------------
+  ## Location & Venue
+  --------------------------------------------------------------*/
+  // Gets first line, capitalizes it
+  firstLn = location.split('\n');
+  cap = firstLn[0].toUpperCase();
+  firstLnFrmt = '<b>' + cap + '</b><br>';
+
+  // Removes the first line from location input because its already saved in from firstLnFrmt
+  rmFirstLn = location.replace(firstLn[0], '');
+
+  locationFinal = firstLnFrmt + rmFirstLn;
+
   /*--------------------------------------------------------------
   ## Mailing ID
   --------------------------------------------------------------*/
@@ -112,32 +169,8 @@ $('#btnGenerate').click(function(){
   $('#subject').text(subject);
   $('#output_img_name').text(img_name);
 
-  $('#outputHtml').val(newPreorder);
-});
+  // $('#outputHtml').val(newPreorder);
 
+  $('#outputHtml').val(newPreorder + '\n\r' + locationFinal);
 
-$('.label').each(function(){
-  $('span').mouseover(function(){
-    $(this).next('code').show();
-  });
-
-  $('span').mouseout(function(){
-    $(this).next('code').hide();
-  });
-});
-
-/*--------------------------------------------------------------
-# Tab control
---------------------------------------------------------------*/
-$('#btnHtml').click(function(){
-  $(this).addClass('active');
-  $('#btnTxt').removeClass('active');
-  $('#outputHtml').show();
-  $('#outputTxt').hide();
-});
-$('#btnTxt').click(function(){
-  $(this).addClass('active');
-  $('#btnHtml').removeClass('active');
-  $('#outputTxt').show();
-  $('#outputHtml').hide();
 });
