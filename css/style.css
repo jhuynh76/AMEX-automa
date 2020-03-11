@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Normalize
+# Form
+	## Input
+	## Button
+	## Output
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+:root{
+	--default_font: 16px;
+	--placeholder_txt: 12px;
+	--bg_color: #f6f0e7;
+	--btn_color: #00a264;
+	--box_shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+body{
+	font-size: var(--default_font);
+	background-color: var(--bg_color);
+	font-family: 'Roboto', sans-serif;
+}
+
+section{margin-bottom: 2%}
+
+#title{margin-bottom: 2%}
+#title h1{margin-bottom: 5px;}
+p{margin-top: 0}
+
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+div, #btn, .checkboxes {margin-bottom: 15px;}
+
+.label:before{display: block; margin-bottom: 5px;}
+
+.name:before{content: 'Name';}
+.img_name:before{content: 'Image Name';}
+.preorder:before{content: 'Pre-order';}
+.blurb:before{content: '*Blurb';}
+.legal:before{content: 'Legal';}
+
+/*--------------------------------------------------------------
+## Input
+--------------------------------------------------------------*/
+input[type="checkbox"]{
+	zoom: 2;
+	margin: 0 2px 0 0;
+}
+
+input[type="text"],
+textarea{
+	width: 50%;
+	padding: 10px; font-size: 1em;
+	border: none;
+	border-radius: 3px;
+	box-shadow: var(--box_shadow);
+}
+
+input::placeholder{
+	font-style: italic;
+	font-size: var(--placeholder_txt);
+}
+
+textarea{min-height: 200px;}
+
+/*--------------------------------------------------------------
+## Button
+--------------------------------------------------------------*/
+#btn{
+	border: 1px solid #016c43;
+	border-radius: 5px;
+	background-color: var(--btn_color);
+	transition: 0.3s ease-in-out;
+}
+#btn:hover{background-color: #016c43;}
+
+.btn{
+	padding: 10px 30px;
+	font-size: 1em;
+	color: white;
+}
+.btn:active, .btn:focus{outline: none;}
+.btn:hover{cursor: pointer;}
+
+.btnTabs{
+	background-color: #999;
+	border: none;
+	box-shadow: var(--box_shadow);
+	border-radius: 5px 5px 0 0;
+	color: white;
+}
+
+.active{
+	background-color: white;
+	color: inherit;
+}
+
+/*--------------------------------------------------------------
+## Output
+--------------------------------------------------------------*/
+#id:before{content: 'ID:'}
+#subject:before{content: 'Subject Line:'}
+#output_img_name:before{content: 'Image Name:'}
+
+h3:before,h4:before{margin-right: 5px;}
+
+.output textarea{
+	width: 70%;
+	min-height: 500px;
+	font-size: var(--placeholder_txt);
+}
+
+#outputTxt{display: none;}

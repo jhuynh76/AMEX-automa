@@ -1,105 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="author" content="JHD Solutions" charset="utf-8">
 	<title>AMEX Automata</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	<h1>{{ message }}</h1>
-	<!-- Checkbox group (French, Bud Stage) -->
-	<div class="french">
-		<input type="checkbox" id="french"/><span>French?</span>
-	</div>
-	<div class="bud">
-		<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
-	</div>
+	<section>
 
-	<!-- Name -->
-	<div class="label name">
-		<input type="text" id="name"/>
-	</div>
+		<div id="title">
+			<h1>{{ message }}</h1>
+			<p>{{ desc }}</p>
+		</div>
 
-	<!-- Image -->
-	<div class="label img_name">
-		<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
-	</div>
+		<!-- Checkbox group (French, Bud Stage) -->
+		<div class="french">
+			<input type="checkbox" id="french"/><span>French?</span>
+		</div>
+		<div class="bud">
+			<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
+		</div>
 
-	<!-- Preorder snippet -->
-	<div class="label preorder">
-		<textarea id="preorder"></textarea>
-	</div>
+		<!-- Name -->
+		<div class="label name">
+			<input type="text" id="name"/>
+		</div>
 
-	<!-- blurb -->
-	<div class="label blurb">
-		<textarea id="blurb"></textarea>
-	</div>
+		<!-- Image -->
+		<div class="label img_name">
+			<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
+		</div>
 
-	<button id="btn">Ok</button>
+		<!-- Preorder snippet -->
+		<div class="label preorder">
+			<textarea id="preorder"></textarea>
+		</div>
 
-	<!-- ID/Filename -->
-	<h3 id="id"></h3>
-	<h4 id="subject"></h4>
-	<h4 id="output_img_name"></h4>
-	<textarea class="output" id="output_html"></textarea>
-	<textarea class="output" id="output_txt"></textarea>
+		<!-- blurb -->
+		<div class="label blurb">
+			<textarea id="blurb"></textarea>
+		</div>
+
+		<button class="btn" id="btn">Ok</button>
+
+		<!-- Output -->
+		<h3 id="id"></h3>
+		<h4 id="subject"></h4>
+		<h4 id="output_img_name"></h4>
+
+		<!-- TAB CONTROL -->
+		<button class="btn btnTabs active" id="btnHtml">HTML</button>
+		<button class="btn btnTabs" id="btnTxt">Text</button>
+		<div class="output">
+			<textarea class="output" id="outputHtml">aa</textarea>
+			<textarea class="output" id="outputTxt"></textarea>
+		</div>
+	</section>
+</body>
+</html>
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/vue.min.js"></script>
+<Script src="js/script.js"></script>
 <script>
-	$(document).ready(function(){
-		$.get('https://code.jquery.com/jquery-3.4.1.min.js', function(data){
-			$('#output_txt').text(data);		
-		});
-	});
-
-
-	$('#btn').click(function(){
-		var name = $('#name').val();
-		var img_name = $('#img_name').val();
-		var preorder = $('#preorder').val();
-		var blurb = $('#blurb').val();
-
-		var lang;
-		var id;
-		var subject;
-
-		// Gets language
-		if ( $('#french').prop('checked') == true ){
-			lang = 'FRE';
-		} else{
-			lang = 'ENG';
-		}
-
-		// gets image name
-		if ( img_name == '' ){
-			img_name = 'AMEX_img_FPO';
-		}
-
-		// finds name in preorder and bolds it, replaces ® to HTML code
-		var regx = new RegExp(name, 'g');
-		var newPreorder = preorder
-			.replace(regx, '<b>' + name +'</b>')
-			.replace(/®/g, "<sup style='font-size:10px'>&reg;</sup>")
-
-		
-		// converts name to mailing ID
-		id = 'CA_FOTL_20_' + name.replace(/ /g, '_') + '_ON_' + lang;
-
-		// converts name to subject line
-		subject = 'Edmonton | ' + name + ' via Front Of The Line®';
-
-		$('#id').text(id.toUpperCase());
-		$('#subject').text(subject);
-		$('#output_img_name').text(img_name);
-
-		$('#output_html').val(newPreorder);
-	});
-
 	var title = new Vue({
-		el: 'h1',
+		el: '#title h1',
 		data: { message: 'AMEX Automa' }
 	});
-</script>
 
-</body>
-</html>
+	var desc = new Vue({
+		el: '#title p',
+		data: { desc: 'Script created to automate AMEX e-mails as much as possible. Just input the values, hit "Ok", and it will be available in the output below in both HTML and Text variants' }
+	});
+</script>
