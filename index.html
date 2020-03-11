@@ -7,54 +7,65 @@
 </head>
 <body>
 	<section class="container">
-
 		<div id="title">
 			<h1>{{ message }}</h1>
 			<p>{{ desc }}</p>
 		</div>
 
 		<!-- Checkbox group (French, Bud Stage) -->
-		<div class="french">
-			<input type="checkbox" id="french"/><span>French?</span>
-		</div>
-		<div class="bud">
-			<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
-		</div>
+		<fieldset>
+			<legend>Categories</legend>
+			<div class="french">
+				<input type="checkbox" id="french"/><span>French?</span>
+			</div>
+			<div class="bud">
+				<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
+			</div>
+		</fieldset>
 
 		<!-- Name -->
-		<div class="label name">
-			<input type="text" id="name"/>
-		</div>
+		<fieldset>
+			<legend>Input</legend>
+			<div class="label name">
+				<pre></pre>
+				<input type="text" id="name"/>
+			</div>
 
-		<!-- Image -->
-		<div class="label img_name">
-			<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
-		</div>
+			<!-- Image -->
+			<div class="label img_name">
+				<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
+			</div>
 
-		<!-- Preorder snippet -->
-		<div class="label preorder">
-			<textarea id="preorder"></textarea>
-		</div>
+			<!-- Preorder snippet -->
+			<div class="label preorder">
+				<textarea id="preorder"></textarea>
+			</div>
 
-		<!-- blurb -->
-		<div class="label blurb">
-			<textarea id="blurb"></textarea>
-		</div>
+			<!-- blurb -->
+			<div class="label blurb">
+				<textarea id="blurb"></textarea>
+			</div>
+		</fieldset>
 
-		<button class="btn" id="btn">Ok</button>
+		<button class="btn" id="btn">Generate</button>
 
 		<!-- Output -->
-		<h3 id="id"></h3>
-		<h4 id="subject"></h4>
-		<h4 id="output_img_name"></h4>
+		<fieldset>
+			<legend>Output</legend>
+			<div class="output_info">
+				<h3 id="id"></h3>
+				<h4 id="subject"></h4>
+				<h4 id="output_img_name"></h4>
+			</div>
 
-		<!-- TAB CONTROL -->
-		<button class="btn btnTabs active" id="btnHtml">HTML</button>
-		<button class="btn btnTabs" id="btnTxt">Text</button>
-		<div class="output">
-			<textarea class="output" id="outputHtml">aa</textarea>
-			<textarea class="output" id="outputTxt"></textarea>
-		</div>
+			<!-- TAB CONTROL -->
+			<button class="btn btnTabs active" id="btnHtml">HTML</button>
+			<button class="btn btnTabs" id="btnTxt">Text</button>
+			<div class="output">
+				<textarea class="output" id="outputHtml"></textarea>
+				<textarea class="output" id="outputTxt"></textarea>
+			</div>
+		</fieldset>
 	</section>
 </body>
 </html>
@@ -70,6 +81,6 @@
 
 	var desc = new Vue({
 		el: '#title p',
-		data: { desc: 'Script created to automate AMEX e-mails as much as possible. Just input the values, hit "Ok", and it will be available in the output below in both HTML and Text variants' }
+		data: { desc: 'Script created to automate AMEX e-mails as much as possible. Just input the values, hit "Generate", and it will be available in the output below in both HTML and Text variants' }
 	});
 </script>

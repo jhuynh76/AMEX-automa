@@ -4,6 +4,7 @@
 ----------------------------------------------------------------
 # Variables
 # Normalize
+	## Typography
 # Elements
 # Form
 	## Input
@@ -18,6 +19,8 @@
 	--placeholder_txt: 12px;
 	--bg_color: #f6f0e7;
 	--btn_color: #00a264;
+	--grey: #7d7a75;
+	--light_grey: #ded7c8;
 	--box_shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
@@ -30,11 +33,13 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
-section{margin-bottom: 2%}
-
 #title{margin-bottom: 45px}
 #title h1{margin-bottom: 5px; font-size: 2em}
-p{margin-top: 0}
+
+/*--------------------------------------------------------------
+## Typography
+--------------------------------------------------------------*/
+h1,h2,h3,h4,h5,h6,p{margin-top: 0}
 
 /*--------------------------------------------------------------
 # Elements
@@ -45,7 +50,18 @@ p{margin-top: 0}
 /*--------------------------------------------------------------
 # Form
 --------------------------------------------------------------*/
-div, #btn, .checkboxes {margin-bottom: 15px;}
+fieldset{
+	margin: 0;
+	border-radius: 5px;
+	padding: 12px 20px 20px;
+	border: 1px solid var(--light_grey);
+}
+fieldset legend{color: var(--light_grey);}
+fieldset div:last-of-type{margin-bottom: 0}
+
+div, fieldset, #btn {margin-bottom: 15px;}
+
+.output_info{margin-bottom: 45px;}
 
 .label:before{display: block; margin-bottom: 5px;}
 
@@ -65,7 +81,7 @@ input[type="checkbox"]{
 
 input[type="text"],
 textarea{
-	width: 100%;
+	width: -webkit-fill-available;
 	padding: 10px; font-size: 1em;
 	border: none;
 	border-radius: 3px;
