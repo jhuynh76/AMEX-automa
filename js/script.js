@@ -1,5 +1,16 @@
-// CTA function
-$('#btn').click(function(){
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# CTA function
+  ## Replacement function
+  ## Mailing ID
+# Tab Control
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# CTA function
+--------------------------------------------------------------*/
+$('#btnGenerate').click(function(){
   var name = $('#name').val();
   var img_name = $('#img_name').val();
   var preorder = $('#preorder').val();
@@ -30,14 +41,15 @@ $('#btn').click(function(){
     });
   }
 
-  // gets image name
-  if ( img_name == '' ){
-    img_name = 'AMEX_img_FPO';
-  }
+  // if img name is blank, give it the FPO name
+  if ( img_name == '' ){ img_name = 'AMEX_img_FPO'; }
 
   var yr = new Date();
   var yrShort = yr.getFullYear().toString().slice(-2);
 
+  /*--------------------------------------------------------------
+  ## Replacement function
+  --------------------------------------------------------------*/
   // finds name in preorder and bolds it, replaces ® to HTML code
   var regx = new RegExp(name, 'g');
   var newPreorder = preorder
@@ -87,6 +99,9 @@ $('#btn').click(function(){
 		.replace(/”/g, '&rdquo')
 		.replace(/\n/g, '<br>\r');
 
+  /*--------------------------------------------------------------
+  ## Mailing ID
+  --------------------------------------------------------------*/
   // converts name to mailing ID
   id = 'CA_FOTL_' + yrShort + '_' + name.replace(/ /g, '_') + '_ON_' + lang;
 
@@ -100,7 +115,20 @@ $('#btn').click(function(){
   $('#outputHtml').val(newPreorder);
 });
 
-// Tab control
+
+$('.label').each(function(){
+  $('span').mouseover(function(){
+    $(this).next('code').show();
+  });
+
+  $('span').mouseout(function(){
+    $(this).next('code').hide();
+  });
+});
+
+/*--------------------------------------------------------------
+# Tab control
+--------------------------------------------------------------*/
 $('#btnHtml').click(function(){
   $(this).addClass('active');
   $('#btnTxt').removeClass('active');

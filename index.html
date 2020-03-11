@@ -3,70 +3,81 @@
 <head>
 	<meta name="author" content="JHD Solutions" charset="utf-8">
 	<title>AMEX Automata</title>
+	<link rel="stylesheet" type="text/css" href="css/all.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	<section class="container">
+	<main class="container">
 		<div id="title">
 			<h1>{{ message }}</h1>
 			<p>{{ desc }}</p>
 		</div>
 
-		<!-- Checkbox group (French, Bud Stage) -->
-		<fieldset>
-			<legend>Categories</legend>
-			<div class="french">
-				<input type="checkbox" id="french"/><span>French?</span>
-			</div>
-			<div class="bud">
-				<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
-			</div>
-		</fieldset>
+		<section id="input">
+			<!-- Checkbox group (French, Bud Stage) -->
+			<fieldset>
+				<legend>Categories</legend>
+				<div class="french">
+					<input type="checkbox" id="french"/><span>French?</span>
+				</div>
+				<div class="bud">
+					<input type="checkbox" id="bud"/><span>Budweiser Stage?</span>
+				</div>
+			</fieldset>
 
-		<!-- Name -->
-		<fieldset>
-			<legend>Input</legend>
-			<div class="label name">
-				<pre></pre>
-				<input type="text" id="name"/>
-			</div>
+			<!-- Name -->
+			<fieldset>
+				<legend>Input</legend>
+				<div class="label name">
+					<span></span>
+					<code>This field here is the name of the artist, and it will be used to generate the name in the subject line, mailing ID, the location & venue, and the pre-sale blurb.</code>
+					<input type="text" id="name"/>
+				</div>
 
-			<!-- Image -->
-			<div class="label img_name">
-				<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
-			</div>
+				<!-- Image -->
+				<div class="label img_name">
+					<span></span>
+					<code>Input the image name here without the ext. It'll generate in at the end.</code>
+					<input type="text" id="img_name" placeholder="eg. ABC200203_KB_620x740"/>
+				</div>
 
-			<!-- Preorder snippet -->
-			<div class="label preorder">
-				<textarea id="preorder"></textarea>
-			</div>
+				<!-- Preorder snippet -->
+				<div class="label preorder">
+					<span></span>
+					<code>This is the pre-sale snippet. If there is an artist name here that is the same in the name field, their name will be bolded in the HTML output.</code>
+					<textarea id="preorder"></textarea>
+				</div>
 
-			<!-- blurb -->
-			<div class="label blurb">
-				<textarea id="blurb"></textarea>
-			</div>
-		</fieldset>
+				<!-- blurb -->
+				<div class="label blurb">
+					<textarea id="blurb"></textarea>
+				</div>
+			</fieldset>
 
-		<button class="btn" id="btn">Generate</button>
+			<button class="btn btn-cta" id="btnGenerate">Generate</button>
+		</section>
 
 		<!-- Output -->
-		<fieldset>
-			<legend>Output</legend>
-			<div class="output_info">
-				<h3 id="id"></h3>
-				<h4 id="subject"></h4>
-				<h4 id="output_img_name"></h4>
-			</div>
+		<section id="output">
+			<fieldset>
+				<legend>Output</legend>
+				<div class="output_info">
+					<h3 id="id"></h3>
+					<h4 id="subject"></h4>
+					<h4 id="output_img_name"></h4>
+				</div>
 
-			<!-- TAB CONTROL -->
-			<button class="btn btnTabs active" id="btnHtml">HTML</button>
-			<button class="btn btnTabs" id="btnTxt">Text</button>
-			<div class="output">
-				<textarea class="output" id="outputHtml"></textarea>
-				<textarea class="output" id="outputTxt"></textarea>
-			</div>
-		</fieldset>
-	</section>
+				<!-- TAB CONTROL -->
+				<button class="btn btnTabs active" id="btnHtml">HTML</button>
+				<button class="btn btnTabs" id="btnTxt">Text</button>
+				<div class="output">
+					<textarea class="output" id="outputHtml"></textarea>
+					<textarea class="output" id="outputTxt"></textarea>
+				</div>
+			</fieldset>
+
+		</section>
+	</main>
 </body>
 </html>
 
