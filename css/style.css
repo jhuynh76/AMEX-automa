@@ -22,6 +22,7 @@
 	--grey: #7d7a75;
 	--light_grey: #ded7c8;
 	--blue: #1c5c76;
+	--red: #a50000;
 	--box_shadow: 0 0 6px rgba(0,0,0,0.3);
 }
 
@@ -65,14 +66,15 @@ fieldset legend{color: var(--light_grey);}
 fieldset div:last-of-type{margin-bottom: 0}
 
 div, fieldset, #btnGenerate {margin-bottom: 30px;}
-.checkboxGrp{margin-bottom: 15px;}
+
+select, .checkboxGrp{margin-bottom: 15px;}
 
 .output_info{margin-bottom: 45px;}
 
 .label{position: relative;}
 .label:before{
 	display: inline-flex;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .label span:before{
@@ -116,7 +118,7 @@ input[type="checkbox"]{
 	margin: 0 5px 0 0;
 }
 
-input[type="text"], textarea{
+input[type="text"], select, textarea{
 	width: -webkit-fill-available;
 	min-width: -webkit-fill-available;
 	padding: 10px; font-size: 1em;
@@ -174,10 +176,29 @@ input[type="checkbox"]:hover,
 	color: inherit;
 }
 
+#btnHelp{
+	position: fixed;
+	left: 0;
+	top: 0; bottom: 0;
+	transform: rotate(270deg);
+	height: 38px;
+	margin: auto 0 auto -35px;
+	border-radius: 0 0 10px 10px;
+	background-color: var(--red);
+	border-color: #6c0101;
+}
+
+#btnBack:before{
+	content: '\f104';
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	margin-right: 10px;
+}
+
 /*--------------------------------------------------------------
 ## Output
 --------------------------------------------------------------*/
-#id:before{content: 'ID:'}
+#id:before{content: 'Mailing ID:'}
 #subject:before{content: 'Subject Line:'}
 #output_img_name:before{content: 'Image Name:'}
 
@@ -187,9 +208,6 @@ h3:before,h4:before{margin-right: 5px;}
 	min-height: 500px;
 	font-size: var(--placeholder_txt);
 }
-.output textarea:focus{
-	outline: none;
-}
+.output textarea:focus{outline: none;}
 
-#blurb,
-#outputTxt{display: none;}
+#blurb, #output, #outputTxt{display: none;}

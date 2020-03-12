@@ -7,13 +7,14 @@
 # CTA function
   ## Replacement function
   ## Mailing ID
+# Back Button
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Optional Toggle
 --------------------------------------------------------------*/
 $('.blurb input[type="checkbox"]').change(function(){
     if ( $(this).prop('checked') ){
-      $('#blurb').fadeIn(300, function(){});      
+      $('#blurb').fadeIn(300, function(){});
     }
     else{
       $('#blurb').fadeOut(300, function(){});
@@ -52,10 +53,12 @@ $('#btnTxt').click(function(){
 /*--------------------------------------------------------------
 # CTA function
 --------------------------------------------------------------*/
-$('#btnGenerate').click(function(){
+$('#btnGenerate').click(function(e){
   var name = $('#name').val();
   var img_name = $('#img_name').val();
   var blurb = $('#blurb').val();
+  var provinceID = $('#province option:selected').val();
+  var provinceName = $('#province option:selected').text();
   var location = $('#location').val();
 
   var lang;
@@ -84,7 +87,18 @@ $('#btnGenerate').click(function(){
   }
 
   // if img name is blank, give it the FPO name
-  if ( img_name == '' ){ img_name = 'AMEX_img_FPO'; }
+  if ( img_name == '' ){ img_name = 'AMEX_img_FPO.jpg'; }
+
+  // Validator
+  if (name == ' ' || name == ''){
+    e.preventDefault();
+    $('html, body').animate({scrollTop: 0}, 400);
+    $('#name').focus();
+
+  } else{
+    $('#input').fadeOut(300, function(){});
+    $('#output').fadeIn(300, function(){});
+  }
 
   var yr = new Date();
   var yrShort = yr.getFullYear().toString().slice(-2);
@@ -97,14 +111,14 @@ $('#btnGenerate').click(function(){
   var regx = new RegExp(name, 'g');
   var newPreorder = preorder
     // .replace(regx, '<b>' + name +'</b>')
-    
+
     .replace(/[Á]/g, '&Aacute;')
     .replace(/[á]/g, '&aacute;')
     .replace(/[À]/g, '&Agrave;')
     .replace(/[à]/g, '&agrave;')
     .replace(/[Â]/g, '&Acirc;')
     .replace(/[â]/g, '&acirc;')
-    
+
     .replace(/[É]/g, '&Eacute;')
     .replace(/[é]/g, '&eacute;')
     .replace(/[È]/g, '&Egrave;')
@@ -160,10 +174,10 @@ $('#btnGenerate').click(function(){
   ## Mailing ID
   --------------------------------------------------------------*/
   // converts name to mailing ID
-  id = 'CA_FOTL_' + yrShort + '_' + name.replace(/ /g, '_') + '_ON_' + lang;
+  id = 'CA_FOTL_' + yrShort + '_' + name.replace(/ /g, '_') + '_' + provinceID + '_' + lang;
 
   // converts name to subject line
-  subject = 'Edmonton | ' + name + ' via Front Of The Line®';
+  subject = provinceName + ' | ' + name + ' via Front Of The Line®';
 
   $('#id').text(id.toUpperCase());
   $('#subject').text(subject);
@@ -171,6 +185,13 @@ $('#btnGenerate').click(function(){
 
   // $('#outputHtml').val(newPreorder);
 
-  $('#outputHtml').val(newPreorder + '\n\r' + locationFinal);
+  $('#outputHtml').val(img_name + '\n\r' + newPreorder + '\n\r' + locationFinal);
+});
 
+/*--------------------------------------------------------------
+# Back button
+--------------------------------------------------------------*/
+$('#btnBack').click(function(){
+  $('#output').fadeOut(300, function(){});
+  $('#input').fadeIn(300, function(){});
 });

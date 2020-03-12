@@ -13,6 +13,8 @@
 			<p>{{ desc }}</p>
 		</div>
 
+		<button class="btn btn-cta" id="btnHelp">Help?</button>
+
 		<section id="input">
 			<!-- Checkbox group (French, Bud Stage) -->
 			<fieldset>
@@ -31,9 +33,9 @@
 
 			<fieldset>
 				<legend>Input</legend>
-	
+
 				<!-- Name -->
-				<div class="label name">
+				<div class="label name required">
 					<span></span>
 					<code>This field here is the name of the artist, and it will be used to generate the name in the subject line, mailing ID, the location & venue, and the pre-sale copy.</code>
 					<input type="text" id="name"/>
@@ -64,6 +66,9 @@
 				<div class="label location">
 					<span></span>
 					<code>Location & venue copy goes here. First line will be capitalized (also bolded in the HTML version only)</code>
+					<select id="province">
+						<option v-for="(name, value) in object" :value="value">{{ name }}</option>
+					</select>
 					<textarea id="location"></textarea>
 				</div>
 			</fieldset>
@@ -75,7 +80,7 @@
 		<section id="output">
 			<fieldset>
 				<legend>Output</legend>
-				
+
 				<div class="output_info">
 					<h3 id="id"></h3>
 					<h4 id="subject"></h4>
@@ -91,6 +96,8 @@
 				</div>
 			</fieldset>
 
+			<button class="btn btn-cta" id="btnBack">Back</button>
+
 		</section>
 	</main>
 </body>
@@ -102,11 +109,29 @@
 <script>
 	var title = new Vue({
 		el: '#title h1',
-		data: { message: 'AMEX Automa' }
+		data: { message: 'AMEX FOTL Automa' }
 	});
 
 	var desc = new Vue({
 		el: '#title p',
-		data: { desc: 'Script created to automate AMEX e-mails as much as possible. Just input the values, hit "Generate", and it will be available in the output below in both HTML and Text variants' }
+		data: { desc: 'This is a script created to automate FOTL eBlasts as much as possible. Just input the values, hit "Generate", and it will be available in the output as both HTML and Text.' }
 	});
+
+	var province = new Vue({
+		el: '#province',
+		data: {
+			object: {
+				ON: 'Ontario',
+				QC: 'Quebec',
+				NS: 'Nova Scotia',
+				NB: 'New Brunswick',
+				MB: 'Manitoba',
+				BC: 'British Columbia',
+				PE: 'Prince Edward Island',
+				SK: 'Saskatoon',
+				AB: 'Alberta',
+				NL: 'NewFoundland'
+			}
+		}
+	})
 </script>
