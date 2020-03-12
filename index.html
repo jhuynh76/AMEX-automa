@@ -13,7 +13,7 @@
 			<p>{{ desc }}</p>
 		</div>
 
-		<button class="btn btn-cta" id="btnHelp">Help?</button>
+		<button class="btn btn-cta" id="btnHelp">Help</button>
 
 		<section id="input">
 			<!-- Checkbox group (French, Bud Stage) -->
@@ -66,9 +66,12 @@
 				<div class="label location">
 					<span></span>
 					<code>Location & venue copy goes here. First line will be capitalized (also bolded in the HTML version only)</code>
-					<select id="province">
-						<option v-for="(name, value) in object" :value="value">{{ name }}</option>
-					</select>
+					<div class="selectWrapper">
+						<select id="province">
+							<option v-for="(name, value) in object" :value="value">{{ name }}</option>
+						</select>
+						<i class="fas fa-caret-down"></i>
+					</div>
 					<textarea id="location"></textarea>
 				</div>
 			</fieldset>

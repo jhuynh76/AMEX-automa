@@ -133,9 +133,11 @@ input[type="text"], select, textarea{
 	border: none;
 	border-radius: 3px;
 	box-shadow: var(--box_shadow);
+	background-color: white;
 }
 
-input[type="text"]:focus, textarea:focus{
+/*focus/active*/
+input[type="text"]:focus, textarea:focus, select:focus{
 	outline-width: 2px;
 	outline-style: solid;
 	outline-color: var(--blue);
@@ -147,6 +149,20 @@ input::placeholder{
 }
 
 textarea{min-height: 200px;}
+
+select{-webkit-appearance: inherit;}
+
+.selectWrapper{display: flex; position: relative;}
+.selectWrapper select{width: 100%;}
+.selectWrapper i{
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	margin-right: 15px;
+	align-self: center;
+	height: 38px; /* same as select height + padding (18 + 10+10) */
+	font-size: 1.4em;
+}
 
 /*--------------------------------------------------------------
 ## Buttons
@@ -168,6 +184,7 @@ textarea{min-height: 200px;}
 
 /*Cursor: Pointer*/
 input[type="checkbox"]:hover,
+select:hover,
 .btn:hover,
 .label span {cursor: pointer;}
 
@@ -190,16 +207,16 @@ input[type="checkbox"]:hover,
 	left: 0;
 	top: 0; bottom: 0;
 	transform: rotate(270deg);
-	height: 50px;
-	margin: auto 0 auto -38px;
+	height: 40px;
+	margin: 100px 0 auto -38px;
 	border-radius: 0 0 10px 10px;
 	background-color: var(--red);
 	border-color: #6c0101;
 	transition: 0.3s ease-in-out;
+	font-size: 0.8em;
+	text-transform: uppercase;
 }
-#btnHelp:hover{
-	margin-left: -28px;
-}
+#btnHelp:hover{margin-left: -28px;}
 
 #btnBack:before{
 	content: '\f104';
@@ -226,7 +243,7 @@ h3:before,h4:before{margin-right: 5px;}
 
 #outputHtml{
 	background-color: black;
-	color: #7ba328;
+	color: #7ba328; /* green */
 }
 
 #blurb, #output, #outputTxt{display: none;}
