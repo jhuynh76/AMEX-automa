@@ -2,7 +2,8 @@
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Optional Toggle
-# Help Snippet
+# Info Snippet
+# Help Button
 # Tab Control
 # CTA function
   ## Replacement function
@@ -23,7 +24,7 @@ $('.blurb input[type="checkbox"]').change(function(){
 });
 
 /*--------------------------------------------------------------
-# Help snippet
+# Info snippet
 --------------------------------------------------------------*/
 $('.label').each(function(){
   $('span').mouseover(function(){
@@ -33,6 +34,13 @@ $('.label').each(function(){
   $('span').mouseout(function(){
     $(this).next('code').fadeOut(100, function(){});
   });
+});
+
+/*--------------------------------------------------------------
+# Help Button
+--------------------------------------------------------------*/
+$('#btnHelp').click(function(){
+  
 });
 
 /*--------------------------------------------------------------

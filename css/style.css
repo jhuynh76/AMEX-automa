@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&display=swap');
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -33,10 +33,15 @@ body{
 	font-size: var(--default_font);
 	background-color: var(--bg_color);
 	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 }
 
 #title{margin-bottom: 30px}
-#title h1{margin-bottom: 5px; font-size: 2em}
+#title h1{
+	margin-bottom: 5px;
+	font-size: 2em;
+	font-weight: 900;
+}
 
 /*--------------------------------------------------------------
 ## Typography
@@ -51,7 +56,7 @@ h1,h2,h3,h4,h5,h6,p{margin-top: 0}
 
 .flex{display: flex;}
 
-main{margin-top: 30px; margin-bottom: 30px;}
+main{margin: 30px auto;}
 
 /*--------------------------------------------------------------
 # Form
@@ -67,7 +72,10 @@ fieldset div:last-of-type{margin-bottom: 0}
 
 div, fieldset, #btnGenerate {margin-bottom: 30px;}
 
-select, .checkboxGrp{margin-bottom: 15px;}
+select, .checkboxGrp .label, .blurb:before{margin-bottom: 15px;}
+
+.checkboxGrp .label{font-weight: 500}
+.checkboxGrp .label:last-of-type{margin-bottom: 0;}
 
 .output_info{margin-bottom: 45px;}
 
@@ -75,6 +83,7 @@ select, .checkboxGrp{margin-bottom: 15px;}
 .label:before{
 	display: inline-flex;
 	margin-bottom: 10px;
+	font-weight: 500;
 }
 
 .label span:before{
@@ -91,7 +100,6 @@ select, .checkboxGrp{margin-bottom: 15px;}
 .blurb:before{
 	content: '*Blurb (Optional)';
 	display: block;
-	margin-bottom: 15px;
 }
 .location:before{content: 'Location(s) & Venue(s)';}
 .legal:before{content: 'Legal';}
@@ -182,11 +190,15 @@ input[type="checkbox"]:hover,
 	left: 0;
 	top: 0; bottom: 0;
 	transform: rotate(270deg);
-	height: 38px;
-	margin: auto 0 auto -35px;
+	height: 50px;
+	margin: auto 0 auto -38px;
 	border-radius: 0 0 10px 10px;
 	background-color: var(--red);
 	border-color: #6c0101;
+	transition: 0.3s ease-in-out;
+}
+#btnHelp:hover{
+	margin-left: -28px;
 }
 
 #btnBack:before{
@@ -211,5 +223,10 @@ h3:before,h4:before{margin-right: 5px;}
 	font-size: var(--placeholder_txt);
 }
 .output textarea:focus{outline: none;}
+
+#outputHtml{
+	background-color: black;
+	color: #7ba328;
+}
 
 #blurb, #output, #outputTxt{display: none;}
