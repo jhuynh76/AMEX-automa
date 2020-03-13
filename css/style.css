@@ -41,6 +41,7 @@ body{
 	margin-bottom: 5px;
 	font-size: 2em;
 	font-weight: 900;
+	color: var(--blue);
 }
 
 /*--------------------------------------------------------------
@@ -72,7 +73,7 @@ fieldset div:last-of-type{margin-bottom: 0}
 
 div, fieldset, #btnGenerate {margin-bottom: 30px;}
 
-select, .checkboxGrp .label, .blurb:before{margin-bottom: 15px;}
+select, .checkboxGrp .label{margin-bottom: 15px;}
 
 .checkboxGrp .label{font-weight: 500}
 .checkboxGrp .label:last-of-type{margin-bottom: 0;}
@@ -96,15 +97,9 @@ select, .checkboxGrp .label, .blurb:before{margin-bottom: 15px;}
 
 .name:before{content: 'Name';}
 .img_name:before{content: 'Image Name';}
-.presale:before{content: 'Pre-order';}
-.blurb:before{
-	content: '*Blurb (Optional)';
-	display: block;
-}
+.presale:before{content: 'Pre-sale text + blurb';}
 .location:before{content: 'Location(s) & Venue(s)';}
 .legal:before{content: 'Legal';}
-
-#blurb{margin-top: 15px;}
 
 code{
 	display: none;
@@ -246,4 +241,4 @@ h3:before,h4:before{margin-right: 5px;}
 	color: #7ba328; /* green */
 }
 
-#blurb, #output, #outputTxt{display: none;}
+#output, #outputTxt{display: none;}
