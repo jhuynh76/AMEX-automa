@@ -6,6 +6,7 @@
 # Normalize
 	## Typography
 # Elements
+	# Grid
 # Form
 	## Input
 	## Buttons
@@ -56,8 +57,18 @@ h1,h2,h3,h4,h5,h6,p{margin-top: 0}
 .container-wide{max-width: 70%;}
 
 .flex{display: flex;}
+.flex-wrap{display: flex; flex-wrap: wrap;}
 
 main{margin: 30px auto;}
+
+/*--------------------------------------------------------------
+## Grid
+--------------------------------------------------------------*/
+.cols-2{width: 50%;}
+.cols-3{width: 33.33%;}
+.cols-4{width: 25%;}
+.cols-5{width: 20%;}
+.cols-6{width: 16.67%;}
 
 /*--------------------------------------------------------------
 # Form
@@ -73,9 +84,9 @@ fieldset div:last-of-type{margin-bottom: 0}
 
 div, fieldset, #btnGenerate {margin-bottom: 30px;}
 
-select, .checkboxGrp .label{margin-bottom: 15px;}
+select, .checkboxGrp .label, #province{margin-bottom: 15px;}
 
-.checkboxGrp .label{font-weight: 500}
+.checkboxGrp label{font-weight: 500}
 .checkboxGrp .label:last-of-type{margin-bottom: 0;}
 
 .output_info{margin-bottom: 45px;}
@@ -158,6 +169,8 @@ select{-webkit-appearance: inherit;}
 	height: 38px; /* same as select height + padding (18 + 10+10) */
 	font-size: 1.4em;
 }
+
+#province input[type="checkbox"]{margin-bottom: 5px;}
 
 /*--------------------------------------------------------------
 ## Buttons

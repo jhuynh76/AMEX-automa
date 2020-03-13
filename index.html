@@ -20,12 +20,12 @@
 			<fieldset class="checkboxGrp">
 				<legend>Categories</legend>
 				<div class="label">
-					<input type="checkbox" id="french"/><label>French?</label>
+					<label><input type="checkbox" id="french"/>French?</label>
 					<span></span>
 					<code>If this is checked off, the French eBlast will be generated instead of English.</code>
 				</div>
 				<div class="label">
-					<input type="checkbox" id="bud"/><label>Budweiser Stage?</label>
+					<label><input type="checkbox" id="bud"/>Budweiser Stage?</label>
 					<span></span>
 					<code>If this is checked off, the Bud stage copy will be generated into the eBlast. This includes the small copy after pre-order snippet, and some copy in the Terms & Conditions.</code>
 				</div>
@@ -57,12 +57,9 @@
 
 				<div class="label location">
 					<span></span>
-					<code>Location & venue copy goes here. First line will be capitalized (also bolded in the HTML version only)</code>
-					<div class="selectWrapper">
-						<select id="province">
-							<option v-for="(name, value) in object" :value="value">{{ name }}</option>
-						</select>
-						<i class="fas fa-caret-down"></i>
+					<code>Select the provinces in which the event will be located at. In the textarea below, the copy of the locations and venues will go there</code>					
+					<div id="province" class="checkboxGrp flex-wrap">
+						<label v-for="(name, value) in object" class="cols-4"><input type="checkbox" :data-val="value" :data-name="name" />{{ name }}</label>
 					</div>
 					<textarea id="location"></textarea>
 				</div>
@@ -125,7 +122,7 @@
 				MB: 'Manitoba',
 				BC: 'British Columbia',
 				PE: 'Prince Edward Island',
-				SK: 'Saskatoon',
+				SK: 'Saskatchewan',
 				AB: 'Alberta',
 				NL: 'NewFoundland'
 			}

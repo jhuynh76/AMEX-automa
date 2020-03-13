@@ -11,6 +11,10 @@
   ## Output
 # Back Button
 --------------------------------------------------------------*/
+$('#province').each(function(){
+  $('input[type="checkbox"]').after().data(name);
+});
+
 /*--------------------------------------------------------------
 # Info snippet
 --------------------------------------------------------------*/
@@ -54,8 +58,6 @@ $('#btnGenerate').click(function(e){
   var name = $('#name').val();
   var img_name = $('#img_name').val();
   var presale = $('#presale').val();
-  var provinceID = $('#province option:selected').val();
-  var provinceName = $('#province option:selected').text();
   var location = $('#location').val();
 
   /*--------------------------------------------------------------
@@ -160,12 +162,18 @@ $('#btnGenerate').click(function(e){
   ## Mailing ID
   --------------------------------------------------------------*/
   // converts name to mailing ID
+  var selected = [];
+  $('#province input[type="checkbox"]:checked').each(function(){
+    selected.push( $(this).data('val') );
+  });
+
+  var provinceId = selected.toString().replace(/,/g, '_');
   var yr = new Date();
   var yrShort = yr.getFullYear().toString().slice(-2);
-  var id = 'CA_FOTL_' + yrShort + '_' + name.replace(/ /g, '_') + '_' + provinceID + '_' + lang;
+  var id = 'CA_FOTL_' + yrShort + '_' + name.replace(/ /g, '_') + '_' + provinceId + '_' + lang;
 
   // converts name to subject line
-  var subject = provinceName + ' | ' + name + ' via Front Of The Line®';
+  var subject = provinceId + ' | ' + name + ' via Front Of The Line®';
 
   $('#id').text(id.toUpperCase());
   $('#subject').text(subject);
