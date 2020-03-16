@@ -44,6 +44,12 @@ body{
 	font-weight: 900;
 	color: var(--blue);
 }
+#title h1 a{
+	text-decoration: none;
+	color: inherit;
+}
+
+li{margin-bottom: 10px;}
 
 /*--------------------------------------------------------------
 ## Typography
@@ -123,6 +129,7 @@ code{
 	padding: 10px;
 	z-index: 1;
 }
+code ol{margin: 0}
 
 /*--------------------------------------------------------------
 ## Input
@@ -155,20 +162,7 @@ input::placeholder{
 }
 
 textarea{min-height: 200px;}
-
-select{-webkit-appearance: inherit;}
-
-.selectWrapper{display: flex; position: relative;}
-.selectWrapper select{width: 100%;}
-.selectWrapper i{
-	pointer-events: none;
-	position: absolute;
-	right: 0;
-	margin-right: 15px;
-	align-self: center;
-	height: 38px; /* same as select height + padding (18 + 10+10) */
-	font-size: 1.4em;
-}
+#location{min-height: 500px;}
 
 #province input[type="checkbox"]{margin-bottom: 5px;}
 
@@ -250,8 +244,8 @@ h3:before,h4:before{margin-right: 5px;}
 .output textarea:focus{outline: none;}
 
 #outputHtml{
-	background-color: black;
-	color: #7ba328; /* green */
+	background-color: #343d46; /* black; */
+	color: #89b188; /* green */
 }
 
 #output, #outputTxt{display: none;}

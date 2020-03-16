@@ -9,7 +9,7 @@
 <body>
 	<main class="container">
 		<div id="title">
-			<h1>{{ message }}</h1>
+			<h1><a href="">{{ message }}</a></h1>
 			<p>{{ desc }}</p>
 		</div>
 
@@ -57,7 +57,11 @@
 
 				<div class="label location">
 					<span></span>
-					<code>Select the provinces in which the event will be located at. In the textarea below, the copy of the locations and venues will go there</code>					
+					<code>
+						<ol class="copyList">
+							<li v-for="item in items">{{ item.entry }}</li>
+						</ol>
+					</code>					
 					<div id="province" class="checkboxGrp flex-wrap">
 						<label v-for="(name, value) in object" class="cols-4"><input type="checkbox" :data-val="value" :data-name="name" />{{ name }}</label>
 					</div>
@@ -127,5 +131,15 @@
 				NL: 'NewFoundland'
 			}
 		}
-	})
+	});
+
+	var copyList = new Vue({
+		el: '.copyList',
+		data: {
+			items: [
+				{ entry: 'In the checkboxes below, select the provinces in which the event will be located at, it could be one province, it could all of them. This part will generate part of the subject line and mailing ID.' },
+				{ entry: 'In the textarea below, the copy goes here' }
+			]
+		}
+	});
 </script>
